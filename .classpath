@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/phagex"/>
+	<classpathentry kind="lib" path="/phagex/lib/scripting/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/scripting/js-14.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/scripting/js.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/scripting/jython-standalone-2.7-b1.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/dyn4j-v3.1.8.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/jsoup-1.8.1.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/disruptor.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/gltools-0.1.1a.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/gltools-lwjgl-0.1.1a.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/gltools-materials-0.1.1a.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/jsoup-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/logback-classic-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/logback-core-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/lwjgl.jar"/>
+	<classpathentry kind="lib" path="/phagex/lib/gltools/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
