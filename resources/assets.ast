@@ -2,5 +2,14 @@
 	<classpath>
 		<material name="fighter" texture="Ships/fighter.png" normalmap="Ships/fighter_n.png" lighted="true"/>
 		<material name="blue_racer" texture="Ships/blue_racer.png" normalmap="Ships/blue_racer_n.png" lighted="true"/>
+		
+		<!--Suns -->
+		<material name="red_sun" texture="SolarSystem/Sun/red_sun.png" lighted="true"/>
+		
+		<!--Planets -->
+		<material name="orange_planet" texture="SolarSystem/Planet/orange_planet.png" normalmap="SolarSystem/Planet/planet_n.png" lighted="true"/>
+		<material name="blue_planet" texture="SolarSystem/Planet/blue_planet.png" normalmap="SolarSystem/Planet/planet_n.png" lighted="true"/>
+		<material name="dark_blue_planet" texture="SolarSystem/Planet/dark_blue_planet.png" normalmap="SolarSystem/Planet/planet_n.png" lighted="true"/>
+		<material name="purple_planet" texture="SolarSystem/Planet/purple_planet.png" normalmap="SolarSystem/Planet/planet_n.png" lighted="true"/>
 	</classpath> 
 </assets>
