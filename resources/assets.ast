@@ -1,4 +1,6 @@
 <assets>
 	<classpath>
-	</classpath>  
+		<material name="fighter" texture="Ships/fighter.png" normalmap="Ships/fighter_n.png" lighted="true"/>
+		<material name="blue_racer" texture="Ships/blue_racer.png" normalmap="Ships/blue_racer_n.png" lighted="true"/>
+	</classpath> 
 </assets>
