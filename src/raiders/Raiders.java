@@ -1,6 +1,5 @@
 package raiders;
 
-
 import commons.Resource;
 import commons.ResourceLocator.ClasspathResourceLocator;
 import commons.matrix.Vector2f;
@@ -27,7 +26,7 @@ public class Raiders {
 
 		Scene scene = new Scene(game);
 		game.scenes().addScene(scene, "main");
-		
+
 		game.start();
 		float lastTime = 16f;
 		while (true) {
@@ -39,7 +38,7 @@ public class Raiders {
 	}
 
 	private void addSystems(Game game) {
-		BodySystem bodyPhysics = new BodySystem(new Vector2f(0f, -10f));
+		BodySystem bodyPhysics = new BodySystem(new Vector2f(0f, 0));
 		JointSystem jointPhysics = new JointSystem(bodyPhysics);
 		AnimationSystem animation = new AnimationSystem();
 		RenderingSystem rendering = new RenderingSystem(5f, 5f);
