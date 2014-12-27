@@ -1,3 +1,37 @@
-void update(float time) {
-	
+import org.dyn4j.dynamics.*;
+import engine.core.*;
+import commons.matrix.*;
+import engine.imp.physics.dyn4j.*;
+
+body = entity.components().get(CBody.NAME);
+
+void move(time) {
+	dir = new Vector2f(transform.getRotation());
+	if (keyboard.isKeyPressed(keyboard.getKey("W"))) {
+		body.applyForce(dir.setLength(0.001f * time));
+	}
+	if (keyboard.isKeyPressed(keyboard.getKey("S"))) {
+		body.applyForce(dir.setLength(-0.001f * time));
+	}
+	if (keyboard.isKeyPressed(keyboard.getKey("A"))) {
+		body.applyTorque(0.005f * time);
+	}
+	if (keyboard.isKeyPressed(keyboard.getKey("D"))) {
+		body.applyTorque(-0.005f * time);
+	}
+}
+
+void weapons(time) {
+	numWeapons = script_data.getData("weapon_count");
+	for (int i = 0; i < numWeapons; i++) {
+		weapon = entity.tree().getChild("weapon" + i);
+		translation = scene.getWorldTransform(weapon).getTranslation();
+		mouseVector = new Vector2f(mouse.getWorldX() - translation.getX(), mouse.getWorldY() - translation.getY());
+		weapon.transform().setRotation(mouseVector.angle());
+	}
+}
+
+void update(time) {
+	move(time);
+	weapons(time);
 }

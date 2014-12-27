@@ -5,7 +5,6 @@ import commons.ResourceLocator.ClasspathResourceLocator;
 import commons.matrix.Vector2f;
 
 import engine.core.Game;
-import engine.core.Scene;
 import engine.core.asset.AssetManager;
 import engine.imp.physics.dyn4j.BodySystem;
 import engine.imp.physics.dyn4j.JointSystem;
@@ -24,10 +23,13 @@ public class Raiders {
 		addSystems(game);
 		initResources();
 
-		Scene scene = new Scene(game);
-		game.scenes().addScene(scene, "main");
+		game.scenes().addScene(new World1(game), "main");
 
 		game.start();
+
+		Profiler profiler = new Profiler(game);
+		profiler.start();
+
 		float lastTime = 16f;
 		while (true) {
 			long startTime = System.nanoTime();

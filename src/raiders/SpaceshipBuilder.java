@@ -15,9 +15,10 @@ import engine.imp.render.Material2D;
  * Builds a spaceship.
  */
 public class SpaceshipBuilder extends EntityBuilder {
-	public static final int LAYER = 1;
+	public static final int LAYER = 2;
+	public static final String WEAPON_COUNT = "weapon_count";
 
-	public SpaceshipBuilder(Material2D image, XScript script, Vector2f scale, EntityBuilder... turrets) {
+	public SpaceshipBuilder(Material2D image, Vector2f scale, XScript script, EntityBuilder... weapons) {
 		CBody physics = new CBody();
 		physics.setShape(new Rectangle(scale.getX(), scale.getY()));
 		physics.setGravityScale(0f);
@@ -29,9 +30,13 @@ public class SpaceshipBuilder extends EntityBuilder {
 		this.addComponentBuilder(physics);
 		this.addScript(script);
 		this.getTransform().setScale(scale);
+		this.setRotateChildren(false);
+		this.setScaleChildren(false);
 
-		for (int i = 0; i < turrets.length; i++) {
-			this.addChildBuilder("turret" + i, turrets[i]);
+		for (int i = 0; i < weapons.length; i++) {
+			this.addChildBuilder("weapon" + i, weapons[i]);
 		}
+
+		this.getScriptData().put(WEAPON_COUNT, weapons.length);
 	}
 }
