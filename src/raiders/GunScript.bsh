@@ -1,0 +1,39 @@
+import org.dyn4j.dynamics.*;
+import engine.core.*;
+import commons.matrix.*;
+import engine.imp.physics.dyn4j.*;
+
+float elapsedTime = 0;
+int nextBullet = 0;
+
+void shoot() {
+	cooldown = script_data.getData("cooldown");
+	speed = script_data.getData("speed");
+	numbullets = script_data.getData("numbullets");
+	
+	while (elapsedTime >= cooldown) {
+		worldTrans = scene.getWorldTransform(entity);
+		
+		player = scene.find("player");
+		playerBody = player.components().get(CBody.NAME);
+		
+		bEntity = entity.tree().getChild("bullet" + nextBullet);
+		bEntity.transform().setTranslation(worldTrans.getTranslation());
+		bEntity.transform().setRotation(worldTrans.getRotation());
+		
+		body = bEntity.components().get(CBody.NAME);
+		body.setVelocity(new Vector2f(transform.getRotation()).setLength(speed).add(playerBody.getVelocity()).toVector2f());
+		bEntity.scripts().callFunc("shot");
+		
+		if (nextBullet < numbullets - 1) {
+			nextBullet++;
+		} else {
+			nextBullet = 0;	
+		}
+		elapsedTime -= cooldown;
+	}
+}
+
+void update(time) {
+	elapsedTime += time;
+}

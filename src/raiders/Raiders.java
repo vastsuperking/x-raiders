@@ -40,7 +40,7 @@ public class Raiders {
 	}
 
 	private void addSystems(Game game) {
-		BodySystem bodyPhysics = new BodySystem(new Vector2f(0f, 0));
+		BodySystem bodyPhysics = new BodySystem(new Vector2f(0f, 0f));
 		JointSystem jointPhysics = new JointSystem(bodyPhysics);
 		AnimationSystem animation = new AnimationSystem();
 		RenderingSystem rendering = new RenderingSystem(5f, 5f);

@@ -28,6 +28,7 @@ void weapons(time) {
 		translation = scene.getWorldTransform(weapon).getTranslation();
 		mouseVector = new Vector2f(mouse.getWorldX() - translation.getX(), mouse.getWorldY() - translation.getY());
 		weapon.transform().setRotation(mouseVector.angle());
+		weapon.scripts().callFunc("shoot");
 	}
 }
 

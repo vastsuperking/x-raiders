@@ -5,6 +5,7 @@ import org.dyn4j.geometry.Rectangle;
 
 import commons.matrix.Vector2f;
 
+import engine.core.CTransform.TransformMode;
 import engine.core.EntityBuilder;
 import engine.core.script.XScript;
 import engine.imp.physics.dyn4j.CBody;
@@ -30,10 +31,10 @@ public class SpaceshipBuilder extends EntityBuilder {
 		this.addComponentBuilder(physics);
 		this.addScript(script);
 		this.getTransform().setScale(scale);
-		this.setRotateChildren(false);
-		this.setScaleChildren(false);
 
 		for (int i = 0; i < weapons.length; i++) {
+			EntityBuilder weapon = weapons[i];
+			weapon.setTransformMode(TransformMode.RTRANSLATE);
 			this.addChildBuilder("weapon" + i, weapons[i]);
 		}
 
