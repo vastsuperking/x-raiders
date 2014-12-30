@@ -22,7 +22,7 @@ void shoot() {
 		bEntity.transform().setRotation(worldTrans.getRotation());
 		
 		body = bEntity.components().get(CBody.NAME);
-		body.setVelocity(new Vector2f(transform.getRotation()).setLength(speed).add(playerBody.getVelocity()).toVector2f());
+		body.setVelocity(new Vector2f(worldTrans.getRotation()).setLength(speed).add(playerBody.getVelocity()).toVector2f());
 		bEntity.scripts().callFunc("shot");
 		
 		if (nextBullet < numbullets - 1) {

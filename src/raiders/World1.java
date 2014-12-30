@@ -35,11 +35,11 @@ public class World1 extends Scene {
 		Vector2f playerScale = new Vector2f(0.5f, 1f);
 
 		ProjectileBuilder projectile1 = new ProjectileBuilder(fighter, new Vector2f(0.1f, 0.2f));
-		WeaponBuilder gun1 = WeaponBuilder.buildGun(fighter, new Transform2f(new Vector2f(0.25f, -0.15f), 0f, new Vector2f(0.2f,
-				0.3f)), projectile1, 2, 7, 1000);
+		EntityBuilder gun1 = WeaponBuilder.buildGun(fighter, new Transform2f(new Vector2f(0.2f, -0.18f), 0f, new Vector2f(0.2f,
+				0.3f)), new Vector2f(0f, 0.3f), projectile1, 2, 7, 1000);
 		ProjectileBuilder projectile2 = new ProjectileBuilder(fighter, new Vector2f(0.1f, 0.2f));
-		WeaponBuilder gun2 = WeaponBuilder.buildGun(fighter, new Transform2f(new Vector2f(-0.25f, -0.15f), 0f, new Vector2f(0.2f,
-				0.3f)), projectile2, 2, 3, 300);
+		EntityBuilder gun2 = WeaponBuilder.buildGun(fighter, new Transform2f(new Vector2f(-0.2f, -0.18f), 0f, new Vector2f(0.2f,
+				0.3f)), new Vector2f(0f, 0.3f), projectile2, 2, 3, 300);
 		SpaceshipBuilder builder = new SpaceshipBuilder(fighter, playerScale, playerScript, gun1, gun2);
 		Entity player = this.createEntity("player", this, builder);
 		player.transform().setTranslation(1, 0);
@@ -58,7 +58,7 @@ public class World1 extends Scene {
 
 		EntityBuilder sunBuilder = new EntityBuilder();
 		sunBuilder.addComponentBuilder(new CRender(sun, PLANET_LAYER, 2f));
-		sunBuilder.addComponentBuilder(new CLight(LightFactory.createAmbient(new Color(0.8f, 0.4f, 0.4f))));
+		sunBuilder.addComponentBuilder(new CLight(LightFactory.createAmbient(new Color(0.8f, 0.8f, 0.8f))));
 		Entity sunEntity = this.createEntity("red_sun", this, sunBuilder);
 		sunEntity.transform().setTransform(new Transform2f(sunPosition, 0f, sunScale));
 	}

@@ -2,6 +2,7 @@ import org.dyn4j.dynamics.*;
 import engine.core.*;
 import commons.matrix.*;
 import engine.imp.physics.dyn4j.*;
+import gltools.input.Mouse.MouseButton;
 
 body = entity.components().get(CBody.NAME);
 
@@ -28,7 +29,10 @@ void weapons(time) {
 		translation = scene.getWorldTransform(weapon).getTranslation();
 		mouseVector = new Vector2f(mouse.getWorldX() - translation.getX(), mouse.getWorldY() - translation.getY());
 		weapon.transform().setRotation(mouseVector.angle());
-		weapon.scripts().callFunc("shoot");
+		gameMouse = mouse.getMouse();
+		if (gameMouse.isButtonDown(gameMouse.getButton(MouseButton.LEFT_BUTTON_NAME))) {
+			weapon.tree().getChild("weapon").scripts().callFunc("shoot");
+		}
 	}
 }
 
