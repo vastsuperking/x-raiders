@@ -3,8 +3,7 @@ import engine.imp.render.*;
 float elapsedTime = 0;
 
 void shot() {
-	render = entity.components().get(CRender.NAME);
-	render.setVisible(true);
+	scene.enable(entity);
 	elapsedTime = 0;
 }
 
@@ -12,8 +11,7 @@ void update(time) {
 	flightTime = script_data.getData("flight_time");
 	elapsedTime += time;
 	if (elapsedTime >= flightTime) {
-		render = entity.components().get(CRender.NAME);
-		render.setVisible(false);
+		scene.disable(entity);
 		elapsedTime = 0;
 	}
 }

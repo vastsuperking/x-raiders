@@ -23,9 +23,13 @@ import engine.imp.render.Material2D;
 public class ProjectileBuilder extends EntityBuilder {
 	public static final int LAYER = 3;
 
-	public ProjectileBuilder(Material2D image, Vector2f scale) {
+	public ProjectileBuilder(Material2D image, Vector2f scale, String targetTag, final String ignoreTag, float damage) {
 		AssetManager assets = AssetManager.instance();
-		XScript script = assets.get("ProjectileScript", XJava.class);
+		XScript bulletScript = assets.get("BulletScript", XJava.class);
+		XScript damageScript = assets.get("DamageScript", XJava.class);
+
+		this.getScriptData().put("damage", damage);
+		this.getScriptData().put("target_tag", targetTag);
 
 		CBody physics = new CBody();
 		physics.setShape(new Rectangle(scale.getX(), scale.getY()));
@@ -36,7 +40,10 @@ public class ProjectileBuilder extends EntityBuilder {
 		physics.setCollisionFilter(new CollisionFilter() {
 			@Override
 			public boolean canCollide(Entity entity1, Entity entity2) {
-				return false;
+				if (entity2.tags().getTags().hasTag(ignoreTag))
+					return false;
+
+				return true;
 			}
 
 			@Override
@@ -46,8 +53,10 @@ public class ProjectileBuilder extends EntityBuilder {
 		});
 
 		this.addComponentBuilder(physics);
-		this.addComponentBuilder(new CRender(image, LAYER, 1f));
-		this.addScript(script);
+		CRender render = new CRender(image, LAYER, 1f);
+		this.addComponentBuilder(render);
+		this.addScript(bulletScript);
+		this.addScript(damageScript);
 
 		Transform2f trans = new Transform2f();
 		trans.setScale(scale);

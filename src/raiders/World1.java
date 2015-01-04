@@ -34,12 +34,14 @@ public class World1 extends Scene {
 		XScript playerScript = assets.get("PlayerScript", XJava.class);
 		Vector2f playerScale = new Vector2f(0.5f, 1f);
 
-		ProjectileBuilder projectile1 = new ProjectileBuilder(fighter, new Vector2f(0.1f, 0.2f));
-		EntityBuilder gun1 = WeaponBuilder.buildGun(fighter, new Transform2f(new Vector2f(0.2f, -0.18f), 0f, new Vector2f(0.2f,
-				0.3f)), new Vector2f(0f, 0.3f), projectile1, 2, 7, 1000);
-		ProjectileBuilder projectile2 = new ProjectileBuilder(fighter, new Vector2f(0.1f, 0.2f));
-		EntityBuilder gun2 = WeaponBuilder.buildGun(fighter, new Transform2f(new Vector2f(-0.2f, -0.18f), 0f, new Vector2f(0.2f,
-				0.3f)), new Vector2f(0f, 0.3f), projectile2, 2, 3, 300);
+		ProjectileBuilder projectile1 = new ProjectileBuilder(fighter, new Vector2f(0.1f, 0.2f), "enemy", "ally", 5);
+		ProjectileBuilder projectile2 = new ProjectileBuilder(fighter, new Vector2f(0.1f, 0.2f), "enemy", "ally", 5);
+
+		Transform2f gun1Transform = new Transform2f(new Vector2f(0.2f, -0.18f), 0f, new Vector2f(0.2f, 0.3f));
+		Transform2f gun2Transform = new Transform2f(new Vector2f(-0.2f, -0.18f), 0f, new Vector2f(0.2f, 0.3f));
+
+		EntityBuilder gun1 = WeaponBuilder.buildGun(fighter, gun1Transform, new Vector2f(0f, 0.3f), projectile1, 2, 7, 1000);
+		EntityBuilder gun2 = WeaponBuilder.buildGun(fighter, gun2Transform, new Vector2f(0f, 0.3f), projectile2, 2, 5, 300);
 		SpaceshipBuilder builder = new SpaceshipBuilder(fighter, playerScale, playerScript, gun1, gun2);
 		Entity player = this.createEntity("player", this, builder);
 		player.transform().setTranslation(1, 0);

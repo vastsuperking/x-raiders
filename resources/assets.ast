@@ -15,6 +15,7 @@
 		<!--Scripts -->
 		<xjava 		name="PlayerScript" 				path="raiders/PlayerScript.bsh"/>
 		<xjava 		name="GunScript" 					path="raiders/GunScript.bsh"/>
-		<xjava 		name="ProjectileScript"				path="raiders/ProjectileScript.bsh"/>
+		<xjava 		name="BulletScript"					path="raiders/BulletScript.bsh"/>
+		<xjava 		name="DamageScript"					path="raiders/DamageScript.bsh"/>
 	</classpath> 
 </assets>

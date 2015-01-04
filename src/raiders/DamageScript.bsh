@@ -1,0 +1,11 @@
+import engine.imp.physics.dyn4j.*;
+
+damage = script_data.getData("damage");
+targetTag = script_data.getData("target_tag");
+
+void onContact(hit, contact) {
+	if (hit.tags().getTags().hasTag(targetTag)) {
+		hit.scripts().callFunc("damage", damage);
+	}
+	scene.destroyEntity(entity);
+}
